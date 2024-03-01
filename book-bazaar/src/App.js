@@ -3,7 +3,7 @@ import './App.css'; // Import CSS file for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-
+// marko's git commit test
 // practice
 
 function App() {
