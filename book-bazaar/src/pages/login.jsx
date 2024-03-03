@@ -3,6 +3,8 @@ import React from 'react'
 import { useState } from 'react'
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useForm, SumbitHandler } from "react-hook-form";
 
 const Login = () => {
 
@@ -28,7 +30,7 @@ const Login = () => {
   return (
     <div>
         <h1>Login Page</h1>
-        <form onSubmit={handleSumbit} className='login-form'>
+        <form onSubmit={handleSubmit} className='login-form'>
             <input
                 type="email"
                 placeholder='Email'
