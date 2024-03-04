@@ -58,3 +58,12 @@ ul li {
   width: 20px;
   cursor: pointer;
 } */
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.auth-buttons button {
+  margin-left: 10px; /* Add some spacing between buttons */
+}

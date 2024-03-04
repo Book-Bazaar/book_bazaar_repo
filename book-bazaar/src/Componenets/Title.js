@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import './Title.css';
 import { SearchBar } from './SearchBar';
 import { Profile } from './Profile';
+// import { Slbuttons } from './Slbuttons.js';
 import logo from '../Assets/book_bazaar_logo.png';
 // import profile_icon from '../Assets/user-solid.svg';
 
@@ -24,6 +25,7 @@ function Title() {
       {/* Profile space */}
       {/* <img src={profile_icon} alt="" className="profile" /> */}
       <Profile />
+      {/* <Slbuttons /> */}
     </div>
   );
 }
