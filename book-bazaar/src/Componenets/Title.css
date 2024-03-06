@@ -61,9 +61,20 @@ ul li {
 
 .auth-buttons {
   display: flex;
-  align-items: center;
+  justify-content: flex-end; /* Align buttons to the right side */
+  margin-right: 20px; /* Add padding on the right side */
 }
 
 .auth-buttons button {
   margin-left: 10px; /* Add some spacing between buttons */
+  padding: 8px 16px; /* Add padding to make buttons more clickable */
+  background-color: #007bff; /* Blue color for buttons */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 4px; /* Add some border radius for a rounded appearance */
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+.auth-buttons button:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
 }
