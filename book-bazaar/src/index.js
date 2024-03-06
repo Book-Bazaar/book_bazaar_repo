@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 import SignUp from './Pages/signup';
 import Login from './Pages/login';
-import Protected from './Componenets/protected.jsx';
+import Protected from './Components/protected.jsx';
 import Home from './Pages/home';
 
 const router = createBrowserRouter(

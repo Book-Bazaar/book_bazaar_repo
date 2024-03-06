@@ -1,0 +1,46 @@
+.marketplace {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.tile {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.overlay .price {
+  color: white;
+  font-weight: bold;
+}
+
+.details {
+  padding: 10px;
+}
+
+.details strong {
+  font-weight: bold;
+}
+
+.condition {
+  color: #666;
+}
