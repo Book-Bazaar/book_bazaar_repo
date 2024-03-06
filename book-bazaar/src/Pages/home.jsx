@@ -2,8 +2,9 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { auth } from '../firebase';
 import '../App.css'; // Import CSS file for styling
-import Title from '../Componenets/Title'; // Title component
-import Sidebar from '../Componenets/Sidebar'; // Sidebar component
+import Title from '../Components/Title'; // Title component
+import Sidebar from '../Components/Sidebar'; // Sidebar component
+import Marketplace from '../Components/Marketplace'; // Sidebar component
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -22,7 +23,7 @@ const Home = () => {
       <Title />
       <div className="body">
         <Sidebar />
-        <div className="main-content">Marketplace</div>
+        <Marketplace />
       </div>
       {/* <button onClick={handleLogout}>Logout</button> */}
     </div>
