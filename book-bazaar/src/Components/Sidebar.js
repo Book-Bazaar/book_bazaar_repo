@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { collection, addDoc } from 'firebase/firestore';
+import { firestore, colRefBooks } from '../firebase';
+
 
 function Sidebar() {
   const [showPopup, setShowPopup] = useState(false);
@@ -77,7 +80,7 @@ function Popup({ onClose }) {
       });
   };
 
-  const uploadBook = () => {
+  const uploadBook = async () => {
     const priceRegex = /^(?!0\d)\d+(\.\d{1,2})?$/; // Regular expression to match valid price formats
     if (!fetchSuccess) {
       setErrorMessage('Please enter valid ISBN.');
@@ -92,6 +95,18 @@ function Popup({ onClose }) {
       setErrorMessage('');
       setSuccessMessage('Success: Book uploaded');
       console.log(JSON.stringify(formData, null, 2)); // Printing JSON data to console
+      
+      //Adds books containing fields from formData to FireBase. //Auth: James
+      const addedBook = await addDoc((colRefBooks), {
+        isbn: formData.isbn,
+        title: formData.title,
+        author: formData.author,
+        summary: formData.summary,
+        imgurl: formData.imgurl,
+        price: formData.price,
+        condition: formData.condition,
+      });
+
       // Wait for 2 seconds before closing the popup
       setTimeout(() => {
         onClose();
