@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
+import Filter from './Filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { collection, addDoc } from 'firebase/firestore';
@@ -7,6 +8,10 @@ import { firestore, colRefBooks } from '../firebase';
 
 
 function Sidebar() {
+  const applyFilter = (filterOptions) => {
+    // Implement your filter logic here
+    console.log('Applying filter:', filterOptions);
+  };
   const [showPopup, setShowPopup] = useState(false);
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -21,6 +26,7 @@ function Sidebar() {
         Upload book
       </div>
       <div className="divider"></div>
+      <Filter applyFilter={applyFilter} />
     </div>
   );
 }
@@ -191,5 +197,4 @@ function Popup({ onClose }) {
     </div>
   );
 }
-
 export default Sidebar;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Title.css';
+// import './Title.css';
 import './Marketplace.css';
 
 // Define your Tile component

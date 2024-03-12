@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Popup from './BuyPopup';
 import Tile from './Tile';
+import Filter from './Filter';
 import './Title.css';
 import './Marketplace.css';
-// import { firestore } from '../firebase';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const Marketplace = () => {
@@ -11,10 +11,17 @@ const Marketplace = () => {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedEntry, setSelectedEntry] = useState(null);
-  // const [selectedTileId, setSelectedTileId] = useState(null);
-  // const [selectedTileData, setSelectedTileData] = useState(null);
 
-  // const [tilesData, setTilesData] = useState([]);
+  const fetchDataWithFilters = (sort, condition) => {
+    // Logic to fetch data with applied filters
+    console.log(
+      'Fetching data with filters: Sort -',
+      sort,
+      ', Condition -',
+      condition
+    );
+  };
+
   // Main function that fetching all items in "Books" database
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +36,7 @@ const Marketplace = () => {
           }));
 
           // Sort the fetchedEntries array based on a specific field (e.g., title)
-          fetchedEntries.sort((a, b) => a.title.localeCompare(b.title)); // Sorting by title alphabetically
+          // fetchedEntries.sort((a, b) => a.title.localeCompare(b.title)); // Sorting by title alphabetically
 
           setEntries(fetchedEntries);
           setLoading(false);
@@ -53,9 +60,6 @@ const Marketplace = () => {
   const handleOpenPopup = (entry) => {
     setIsOpen(true);
     setSelectedEntry(entry);
-
-    // setSelectedTileId(id);
-    // setSelectedTileData(data);
   };
 
   const handleClosePopup = () => {
