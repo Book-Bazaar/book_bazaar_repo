@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-// import { useForm, SumbitHandler } from 'react-hook-form';
+import './signup.css';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -33,31 +33,51 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      {error && <p>{error}</p>}
-      <h1>Sign-Up Page</h1>
-      <form onSubmit={handleSubmit} className="signup-form">
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit" className="signup-button">
-          Sign-Up
-        </button>
-      </form>
-      <p>
-        <Link to="/login">Already have an account?</Link>
-      </p>
+    <div className="container">
+      <div className="drop">
+        <div className="content">
+          {error && <p>{error}</p>}
+          <h1>SignUp</h1>
+          <form onSubmit={handleSubmit} className="signup-form">
+            {/* INPUT FOR EMAIL */}
+            <div className="inputBox">
+              <input
+                type="email"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            {/* INPUT FOR PASSWORD */}
+            <div className="inputBox">
+              <input
+                type="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            {/* LOGIN BUTTON */}
+            <div className="inputBox">
+              <button type="submit" className="signup-button">
+                Sign-Up
+              </button>
+            </div>
+          </form>
+
+          {/* LOGIN LINK */}
+          <div className="btns">
+            <p>
+              {' '}
+              <Link to="/login">Login</Link>{' '}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
