@@ -141,6 +141,16 @@ body {
   width: 150px;
 }
 
+/* Edit this one to change log in button */
+.signup-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .btns {
   position: absolute;
   right: -170px;

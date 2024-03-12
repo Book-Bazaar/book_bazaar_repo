@@ -165,6 +165,40 @@ body {
   border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
 }
 
+/* Edit this one to change log in button */
+.login-button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* .btns {
+  position: absolute;
+  right: -170px;
+  bottom: 0;
+  width: 120px;
+  height: 120px;
+  background: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  transition: 0.25s;
+  text-align: center;
+  box-shadow: inset 10px 10px 10px rgba(5, 31, 150, 0.05),
+    15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+} */
+
 .btns::before {
   content: '';
   position: absolute;

@@ -18,10 +18,10 @@ function Menu({ onClose }) {
     <div className="menu-container">
       <div className="menu">
         <ul>
-          <li>My Listings |</li>
-          <li>| Change Password |</li>
+          <li>My Listings</li>
+          <li>Change Password</li>
           <li>
-            | <button onClick={handleSignOut}>Sign Out</button>
+            <button onClick={handleSignOut}>Sign Out</button>
           </li>
         </ul>
         <button onClick={onClose}>Close</button>

@@ -80,6 +80,8 @@ function Popup({ onClose }) {
       .catch((error) => {
         console.error('Error fetching data:', error);
         setFetchSuccess(false); // Mark fetch as unsuccessful
+        setErrorMessage('Error: ISBN not read');
+        setSuccessMessage('');
       });
   };
 
@@ -127,6 +129,7 @@ function Popup({ onClose }) {
       // Wait for 2 seconds before closing the popup
       setTimeout(() => {
         onClose();
+        window.location.reload();
       }, 1800);
     }
 
