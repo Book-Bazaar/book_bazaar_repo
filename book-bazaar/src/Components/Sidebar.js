@@ -4,8 +4,7 @@ import Filter from './Filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { collection, addDoc } from 'firebase/firestore';
-import { firestore, colRefBooks } from '../firebase';
-
+import { firestore, colRefBooks, auth } from '../firebase';
 
 function Sidebar() {
   const applyFilter = (filterOptions) => {
@@ -32,6 +31,8 @@ function Sidebar() {
 }
 
 function Popup({ onClose }) {
+  // const user = auth.currentUser;
+  // const email = user.email;
   const [formData, setFormData] = useState({
     isbn: '',
     title: '',
@@ -40,6 +41,8 @@ function Popup({ onClose }) {
     imgurl: '',
     price: '',
     condition: 'nil',
+    email: '',
+    // email: email,
   });
   const [fetchSuccess, setFetchSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -51,15 +54,9 @@ function Popup({ onClose }) {
       ...formData,
       [name]: value,
     });
-
-    //check condition
-    // if (name === 'condition') {
-    //   if (value === 'nil') {
-    //     setMessage('Error: Condition needs to be selected.');
-    //   }
-    // }
   };
 
+  // Function to pull boom infro from ISBN
   const fetchData = () => {
     // Fetch data from API using formData.isbn
     // Assuming your API endpoint is `https://api.example.com/data?isbn=value`
@@ -100,10 +97,22 @@ function Popup({ onClose }) {
     } else {
       setErrorMessage('');
       setSuccessMessage('Success: Book uploaded');
+
+      const user = auth.currentUser;
+      if (user) {
+        console.log('user logged in');
+        const email = user.email;
+        console.log('user email:', email);
+        formData.email = email;
+      } else {
+        // do stuff here if user is signed out
+        console.log('no user signed in');
+      }
+
       console.log(JSON.stringify(formData, null, 2)); // Printing JSON data to console
-      
+
       //Adds books containing fields from formData to FireBase. //Auth: James
-      const addedBook = await addDoc((colRefBooks), {
+      const addedBook = await addDoc(colRefBooks, {
         isbn: formData.isbn,
         title: formData.title,
         author: formData.author,
@@ -111,6 +120,8 @@ function Popup({ onClose }) {
         imgurl: formData.imgurl,
         price: formData.price,
         condition: formData.condition,
+        email: formData.email,
+        // email: 'example@gmail.com',
       });
 
       // Wait for 2 seconds before closing the popup

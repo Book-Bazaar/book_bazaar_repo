@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Popup from './BuyPopup';
 import Tile from './Tile';
 import Filter from './Filter';
-import './Title.css';
+// import './Title.css';
 import './Marketplace.css';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 

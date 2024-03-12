@@ -16,16 +16,10 @@ function Title() {
     <div className="Title">
       {/* Logo space */}
       <img src={logo} alt="" className="logo" />
-      {/* <ul>
-        <li>Home</li>
-      </ul> */}
       {/* Search bar space */}
       <SearchBar setResults={setResults} />
 
-      {/* Profile space */}
-      {/* <img src={profile_icon} alt="" className="profile" /> */}
       <Profile />
-      {/* <Slbuttons /> */}
     </div>
   );
 }

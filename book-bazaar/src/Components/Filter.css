@@ -7,6 +7,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Need to fix button CSS, width property becomes global? */
+.apply-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: darkgray;
+  color: #fff;
+  cursor: pointer;
+}
+
 h2 {
   font-size: 16px;
   margin-top: 0;
@@ -28,16 +39,6 @@ select {
   border: 1px solid #ccc;
   background-color: #fff;
   font-size: 16px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: darkgray;
-  color: #fff;
-  cursor: pointer;
 }
 
 button:hover {

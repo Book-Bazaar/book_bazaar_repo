@@ -9,12 +9,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  /* grid-template-columns: repeat(4, 1fr); */
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .tile {
-  width: 180px; /* Adjust the width as needed */
+  width: 150px; /* Adjust the width as needed */
   height: 220px; /* Adjust the height as needed */
   background-color: #f0f0f0; /* Placeholder background color */
   border-radius: 8px;

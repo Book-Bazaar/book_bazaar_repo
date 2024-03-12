@@ -36,6 +36,15 @@
   flex: 1;
 }
 
+.popup-details button {
+  /* background-color: green;
+  color: white; */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .contact-button {
   background-color: green;
   color: white;

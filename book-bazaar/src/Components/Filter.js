@@ -40,7 +40,9 @@ const Filter = ({ applyFilter }) => {
           <option value="poor">Poor</option>
         </select>
       </div>
-      <button onClick={handleApplyFilter}>Apply Filter</button>
+      <button className="apply-button" onClick={handleApplyFilter}>
+        Apply Filter
+      </button>
     </div>
   );
 };
