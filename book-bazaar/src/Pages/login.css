@@ -42,6 +42,8 @@ body {
   border-radius: 50%;
 }
 
+
+/* Big Shine Circle Top of Bubble */
 .container .drop::before {
   content: '';
   position: absolute;
@@ -54,6 +56,8 @@ body {
   opacity: 0.9;
 }
 
+
+/* Small Shine Circle Top of Bubble */
 .container .drop::after {
   content: '';
   position: absolute;
@@ -77,6 +81,8 @@ body {
   gap: 15px;
 }
 
+
+/* Login Text */
 .container .drop .content h1 {
   position: relative;
   color: black;
@@ -100,6 +106,7 @@ body {
   border-radius: 25px;
 }
 
+/* White Shine Lines Above Text Boxes and Login Button */
 .container .drop .content form .inputBox::before {
   content: '';
   position: absolute;
@@ -130,6 +137,7 @@ body {
   font-size: 500;
 }
 
+
 /* *.container .drop .content form .inputBox:last-child {
   width: 120px;
   background: #13a021;
@@ -144,6 +152,8 @@ body {
 #0056b3
 */
 
+
+/* Signup Bubble */
 .btns {
   position: absolute;
   right: -170px;
@@ -180,7 +190,7 @@ body {
   opacity: 0.45;
 }
 
-
+/* Login Button */
 .login-button 
 {
   width: 120px;
@@ -200,4 +210,36 @@ body {
   background-color: #0056b3;
   color: white;
   border: transparent;
+}
+
+
+/* .logo
+{
+  width: 55px;
+  margin-left: -300px;
+} */
+
+
+.logoLogin {
+  position: absolute;
+  margin-top: -90px;
+  right: 370px;
+  width: 120px;
+  height: 120px;
+  background: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  transition: 0.25s;
+  text-align: center;
+  box-shadow: inset 10px 10px 10px rgba(5, 31, 150, 0.05),
+    15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
 }
