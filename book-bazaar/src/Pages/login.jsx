@@ -1,32 +1,25 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
 import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import logo from '../Assets/book_bazaar_logo.png';
 import './login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(userCredential);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
       localStorage.setItem('token', user.accessToken);
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/');
     } catch (error) {
-      console.error();
+      console.error('Login Error:', error.message);
     }
   };
 
@@ -35,8 +28,10 @@ const Login = () => {
       <div className="drop">
         <div className="content">
           <h1>Login</h1>
-          <form onSubmit={handleSubmit} className="login-form">
-            {/* INPUT FOR EMAIL */}
+          <Link to="/">
+            <img src={logo} alt="" className="logoLogin" />
+          </Link>
+          <form onSubmit={handleLogin} className="login-form">
             <div className="inputBox">
               <input
                 type="email"
@@ -46,8 +41,6 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
-            {/* INPUT FOR PASSWORD */}
             <div className="inputBox">
               <input
                 type="password"
@@ -57,20 +50,20 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
-            {/* LOGIN BUTTON */}
             <div className="inputBox">
               <button type="submit" className="login-button">
                 Login
               </button>
             </div>
           </form>
-
-          {/* SIGNUP LINK */}
+          <div className="forgot-password">
+            <Link to="/forgot-password">
+              <button className="forgot-password-button">Forgot Password?</button>
+            </Link>
+          </div>
           <div className="btns">
             <p>
-              {' '}
-              <Link to="/signup">SignUp</Link>{' '}
+              <Link to="/signup">SignUp</Link>
             </p>
           </div>
         </div>
