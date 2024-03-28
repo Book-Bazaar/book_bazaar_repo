@@ -42,6 +42,7 @@ body {
   border-radius: 50%;
 }
 
+/* Big Shine Circle Top of Bubble */
 .container .drop::before {
   content: '';
   position: absolute;
@@ -54,6 +55,7 @@ body {
   opacity: 0.9;
 }
 
+/* Small Shine Circle Top of Bubble */
 .container .drop::after {
   content: '';
   position: absolute;
@@ -77,6 +79,7 @@ body {
   gap: 15px;
 }
 
+/* Login Text */
 .container .drop .content h1 {
   position: relative;
   color: black;
@@ -100,6 +103,7 @@ body {
   border-radius: 25px;
 }
 
+/* White Shine Lines Above Text Boxes and Login Button */
 .container .drop .content form .inputBox::before {
   content: '';
   position: absolute;
@@ -142,7 +146,8 @@ body {
   width: 150px;
 }
 
-.btns {
+/* Login Bubble */
+.login-bubble {
   position: absolute;
   right: -170px;
   bottom: 0;
@@ -166,7 +171,8 @@ body {
   border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
 }
 
-.btns::before {
+/* Shine Circle on Top of Login Bubble */
+.login-bubble::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -178,9 +184,27 @@ body {
   opacity: 0.45;
 }
 
+.login-button-bubble {
+  width: 75px;
+  height:35px;
+  border: transparent;
+  color: white;
+  background: #0056b3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+  transition: 0.5s;
+  border-radius: 25px;
+}
 
-.signup-button 
-{
+.login-button-bubble:hover {
+  background-color: #0056b3;
+  color: white;
+  border: transparent;
+  cursor: pointer;
+}
+
+/* Signup Button */
+.signup-button {
   width: 120px;
   height:35px;
   border: transparent;
@@ -193,8 +217,7 @@ body {
   
 }
 
-.signup-button:hover
-{
+.signup-button:hover {
   background-color: #0056b3;
   color: white;
   border: transparent;

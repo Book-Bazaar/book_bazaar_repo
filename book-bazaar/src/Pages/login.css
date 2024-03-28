@@ -135,7 +135,7 @@ body {
 }
 
 /* Signup Bubble */
-.btns {
+.signup-bubble {
   position: absolute;
   right: -170px;
   bottom: 0;
@@ -160,7 +160,7 @@ body {
 }
 
 /* Shine Circle on Top of Signup Bubble */
-.btns::before {
+.signup-bubble::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -170,6 +170,25 @@ body {
   border-radius: 50%;
   background: #fff;
   opacity: 0.45;
+}
+
+.signup-button-bubble {
+  width: 75px;
+  height:35px;
+  border: transparent;
+  color: white;
+  background: #0056b3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+  transition: 0.5s;
+  border-radius: 25px;
+}
+
+.signup-button-bubble:hover {
+  background-color: #0056b3;
+  color: white;
+  border: transparent;
+  cursor: pointer;
 }
 
 /* Login Button */

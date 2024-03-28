@@ -70,12 +70,12 @@ const SignUp = () => {
           </form>
 
           {/* LOGIN LINK */}
-          <div className="btns">
-            <p>
-              {' '}
-              <Link to="/login">Login</Link>{' '}
-            </p>
+          <div className="login-bubble">
+            <Link to="/login">
+              <button className="login-button-bubble">Login</button>
+            </Link>
           </div>
+
         </div>
       </div>
     </div>

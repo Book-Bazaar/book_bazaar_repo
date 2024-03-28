@@ -32,6 +32,7 @@ const Login = () => {
             <img src={logo} alt="" className="logoLogin" />
           </Link>
           <form onSubmit={handleLogin} className="login-form">
+            {/* INPUT FOR EMAIL */}
             <div className="inputBox">
               <input
                 type="email"
@@ -41,6 +42,8 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
+            {/* INPUT FOR PASSWORD */}
             <div className="inputBox">
               <input
                 type="password"
@@ -50,22 +53,29 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+
+            {/* LOGIN BUTTON */}
             <div className="inputBox">
               <button type="submit" className="login-button">
                 Login
               </button>
             </div>
           </form>
+
+          {/* FORGOT PASSWORD */}
           <div className="forgot-password">
             <Link to="/forgot-password">
               <button className="forgot-password-button">Forgot Password?</button>
             </Link>
           </div>
-          <div className="btns">
-            <p>
-              <Link to="/signup">SignUp</Link>
-            </p>
+
+          {/* SIGNUP LINK */}
+          <div className="signup-bubble">
+            <Link to="/signup">
+              <button className="signup-button-bubble">SignUp</button>
+            </Link>
           </div>
+
         </div>
       </div>
     </div>
