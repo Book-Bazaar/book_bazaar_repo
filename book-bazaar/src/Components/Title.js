@@ -1,15 +1,14 @@
 // src/Title.js
 
-import React, { useState } from 'react';
+import React from 'react';
 import './Title.css';
-import { SearchBar } from './SearchBar';
+import SearchBar from './SearchBar';
 import { Profile } from './Profile';
 // import { Slbuttons } from './Slbuttons.js';
 import logo from '../Assets/book_bazaar_logo.png';
 // import profile_icon from '../Assets/user-solid.svg';
 
-function Title() {
-  const [results, setResults] = useState([]);
+function Title({ setSearchQuery }) {
   // console.log({ setResults });
   //use results to effect marketplace showing
   return (
@@ -17,7 +16,7 @@ function Title() {
       {/* Logo space */}
       <img src={logo} alt="" className="logo" />
       {/* Search bar space */}
-      <SearchBar setResults={setResults} />
+      <SearchBar setSearchQuery={setSearchQuery} />
 
       <Profile />
     </div>

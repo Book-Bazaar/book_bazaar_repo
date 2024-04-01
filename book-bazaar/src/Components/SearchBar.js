@@ -2,32 +2,31 @@ import React, { useState } from 'react';
 import './Title.css';
 import search_icon from '../Assets/search_icon.svg';
 
-export const SearchBar = ({ setResults }) => {
+export function SearchBar({ setSearchQuery }) {
   const [input, setInput] = useState('');
 
   const handleChange = (value) => {
     setInput(value);
-    // fetchData(value);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      setInput(input);
-      console.log(input);
-      setResults(input);
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(input);
+    setSearchQuery(input);
   };
 
   return (
-    <div className="search-bar">
+    <form className="search-bar" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Search ISBN..."
+        placeholder="Search by ISBN, Title, or Author..."
         value={input}
         onChange={(e) => handleChange(e.target.value)}
-        onKeyDown={handleKeyDown}
+        // onKeyDown={handleKeyDown}
       />
       <img src={search_icon} alt="" />
-    </div>
+    </form>
   );
-};
+}
+
+export default SearchBar;

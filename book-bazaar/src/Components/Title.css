@@ -62,7 +62,7 @@ ul li {
 .auth-buttons {
   display: flex;
   justify-content: flex-end; /* Align buttons to the right side */
-  margin-right: 50px; /* Add padding on the right side */
+  margin-right: 30px; /* Add padding on the right side */
 }
 
 .auth-buttons button {
@@ -77,4 +77,16 @@ ul li {
 
 .auth-buttons button:hover {
   background-color: #0056b3; /* Darker shade of blue on hover */
+}
+
+.profile {
+  width: 30px; /* Set the width */
+  height: 30px; /* Set the height */
+  border: 1px solid #ccc; /* Border style */
+  border-radius: 50%; /* Make it a circle */
+  transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+.profile:hover {
+  transform: scale(1.1); /* Scale up by 10% on hover */
 }
