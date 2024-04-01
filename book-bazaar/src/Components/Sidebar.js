@@ -87,7 +87,10 @@ function Popup({ onClose }) {
 
   const uploadBook = async () => {
     const priceRegex = /^(?!0\d)\d+(\.\d{1,2})?$/; // Regular expression to match valid price formats
-    if (!fetchSuccess) {
+    if (!auth.currentUser) {
+      setErrorMessage('User is not logged in.');
+      setSuccessMessage('');
+    } else if (!fetchSuccess) {
       setErrorMessage('Please enter valid ISBN.');
       setSuccessMessage('');
     } else if (!priceRegex.test(formData.price)) {
