@@ -13,8 +13,9 @@ body {
 }
 
 .container {
-  margin: 0;
+  margin: auto;
   padding: 0;
+  padding-top: 170px;
   box-sizing: border-box;
   position: relative;
   left: -80px;
@@ -41,6 +42,7 @@ body {
   border-radius: 50%;
 }
 
+/* Big Shine Circle Top of Bubble */
 .container .drop::before {
   content: '';
   position: absolute;
@@ -53,6 +55,7 @@ body {
   opacity: 0.9;
 }
 
+/* Small Shine Circle Top of Bubble */
 .container .drop::after {
   content: '';
   position: absolute;
@@ -76,6 +79,7 @@ body {
   gap: 15px;
 }
 
+/* Login Text */
 .container .drop .content h1 {
   position: relative;
   color: black;
@@ -99,6 +103,7 @@ body {
   border-radius: 25px;
 }
 
+/* White Shine Lines Above Text Boxes and Login Button */
 .container .drop .content form .inputBox::before {
   content: '';
   position: absolute;
@@ -129,19 +134,8 @@ body {
   font-size: 500;
 }
 
-.container .drop .content form .inputBox:last-child {
-  width: 120px;
-  background: #0056b3;
-  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
-    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
-  transition: 0.5s;
-}
-
-.container .drop .content form .inputBox:last-child:hover {
-  width: 150px;
-}
-
-.btns {
+/* Signup Bubble */
+.signup-bubble {
   position: absolute;
   right: -170px;
   bottom: 0;
@@ -165,41 +159,8 @@ body {
   border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
 }
 
-/* Edit this one to change log in button */
-.login-button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* .btns {
-  position: absolute;
-  right: -170px;
-  bottom: 0;
-  width: 120px;
-  height: 120px;
-  background: #0056b3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  text-decoration: none;
-  color: #fff;
-  line-height: 1.2em;
-  letter-spacing: 0.1em;
-  font-size: 0.8em;
-  transition: 0.25s;
-  text-align: center;
-  box-shadow: inset 10px 10px 10px rgba(5, 31, 150, 0.05),
-    15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
-    inset -10px -10px 15px rgba(255, 255, 255, 0.5);
-  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
-} */
-
-.btns::before {
+/* Shine Circle on Top of Signup Bubble */
+.signup-bubble::before {
   content: '';
   position: absolute;
   top: 15px;
@@ -209,4 +170,123 @@ body {
   border-radius: 50%;
   background: #fff;
   opacity: 0.45;
+}
+
+.signup-button-bubble {
+  width: 75px;
+  height:35px;
+  border: transparent;
+  color: white;
+  background: #0056b3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+  transition: 0.5s;
+  border-radius: 25px;
+}
+
+.signup-button-bubble:hover {
+  background-color: #0056b3;
+  color: white;
+  border: transparent;
+  cursor: pointer;
+}
+
+/* Login Button */
+.login-button {
+  width: 120px;
+  height:35px;
+  border: transparent;
+  color: white;
+  background: #0056b3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+  transition: 0.5s;
+  border-radius: 25px;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+  color: white;
+  border: transparent;
+  cursor: pointer;
+}
+
+.logoLogin {
+  position: absolute;
+  margin-top: -90px;
+  right: 370px;
+  width: 120px;
+  height: 120px;
+  background: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  transition: 0.25s;
+  text-align: center;
+  box-shadow: inset 10px 10px 10px rgba(5, 31, 150, 0.05),
+    15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+}
+
+.forgot-password {
+  position: absolute;
+  margin-top: 540px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  font-size: 0.8em;
+  transition: 0.25s;
+  text-align: center;
+  box-shadow: inset 10px 10px 10px rgba(5, 31, 150, 0.05),
+    15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.5);
+  border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+}
+
+/* Shine Circle on Top of Forgot Password Bubble */
+.forgot-password::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.45;
+}
+
+.forgot-password-button {
+  width: 75px;
+  height:35px;
+  border: transparent;
+  color: white;
+  background: #0056b3;
+  box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+    15px 15px 10px rgba(0, 0, 0, 0.05), 15px 10px 15px rgba(0, 0, 0, 0.025);
+  transition: 0.5s;
+  border-radius: 25px;
+}
+
+.forgot-password-button:hover {
+  background-color: #0056b3;
+  color: white;
+  border: transparent;
+  cursor: pointer;
 }

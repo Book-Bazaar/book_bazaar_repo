@@ -59,8 +59,8 @@ const Popup = ({ entry, onClose }) => {
             <img src={imgurl} alt="Product" />
           </div>
           <div className="popup-details">
-            <h2>{title}</h2>
-            <h3>by {author} </h3>
+            <h3>{title}</h3>
+            <h2>by {author} </h2>
             <h3>
               ${price}{' '}
               <span className={`condition ${conditionClass}`}>{condition}</span>

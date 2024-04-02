@@ -1,5 +1,5 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useState } from 'react';
 import { auth } from '../firebase';
 import '../App.css'; // Import CSS file for styling
 import Title from '../Components/Title'; // Title component
@@ -8,6 +8,8 @@ import Marketplace from '../Components/Marketplace'; // Sidebar component
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -20,10 +22,10 @@ const Home = () => {
 
   return (
     <div className="app">
-      <Title />
+      <Title setSearchQuery={setSearchQuery} />
       <div className="body">
         <Sidebar />
-        <Marketplace />
+        <Marketplace searchQuery={searchQuery} />
       </div>
       {/* <button onClick={handleLogout}>Logout</button> */}
     </div>

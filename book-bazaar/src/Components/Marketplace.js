@@ -2,60 +2,48 @@ import React, { useState, useEffect } from 'react';
 import Popup from './BuyPopup';
 import Tile from './Tile';
 import Filter from './Filter';
-// import './Title.css';
-import './Marketplace.css';
+import './Marketplace.css'; // Import CSS file for animations
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-const Marketplace = () => {
+const Marketplace = ({ searchQuery }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const fetchDataWithFilters = (sort, condition) => {
-    // Logic to fetch data with applied filters
-    console.log(
-      'Fetching data with filters: Sort -',
-      sort,
-      ', Condition -',
-      condition
-    );
-  };
-
-  // Main function that fetching all items in "Books" database
   useEffect(() => {
     const fetchData = async () => {
       try {
         const db = getFirestore();
         const colRef = collection(db, 'Books');
-        getDocs(colRef).then((snapshot) => {
-          // console.log(snapshot.docs);
-          const fetchedEntries = snapshot.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }));
+        const snapshot = await getDocs(colRef);
+        const fetchedEntries = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-          // Sort the fetchedEntries array based on a specific field (e.g., title)
-          // fetchedEntries.sort((a, b) => a.title.localeCompare(b.title)); // Sorting by title alphabetically
-
+        // Simulate a delay before setting loading to false
+        setTimeout(() => {
           setEntries(fetchedEntries);
           setLoading(false);
-        });
-        // const snapshot = await getDocs(colRef).get();
-        // setEntries(fetchedEntries);
-        // setLoading(false);
+        }, 1200); // Adjust the delay as needed
       } catch (error) {
         console.error('Error fetching entries: ', error);
-        setLoading(false); // Ensure loading state is set to false in case of error
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator while data is being fetched
-  }
+  const filteredBooks = entries.filter((entry) => {
+    const query = (searchQuery || '').toString().toLowerCase();
+    return (
+      (entry.isbn && entry.isbn.toString().toLowerCase().includes(query)) ||
+      entry.title.toLowerCase().includes(query) ||
+      entry.author.toLowerCase().includes(query)
+    );
+  });
 
   const handleOpenPopup = (entry) => {
     setIsOpen(true);
@@ -68,13 +56,15 @@ const Marketplace = () => {
 
   return (
     <div className="marketplace">
-      {entries.map((entry) => (
-        <Tile
-          key={entry.id}
-          entry={entry} // Pass the entire entry object as a prop
-          onClick={handleOpenPopup}
-        />
-      ))}
+      {loading ? (
+        <div className="loading-animation"></div>
+      ) : filteredBooks.length > 0 ? (
+        filteredBooks.map((entry) => (
+          <Tile key={entry.id} entry={entry} onClick={handleOpenPopup} />
+        ))
+      ) : (
+        <div>No results found</div>
+      )}
       {isOpen && <Popup entry={selectedEntry} onClose={handleClosePopup} />}
     </div>
   );
