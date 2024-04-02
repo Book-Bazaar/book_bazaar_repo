@@ -1,10 +1,10 @@
 import React from 'react';
 import './BuyPopup.css';
-// import { firestore } from './firebase'; // Import your Firebase configuration
+import {collection, deleteDoc, getDocs, doc, getFirestore, getDoc} from 'firebase/firestore';
+import {firestore, colRefBooks, auth} from '../firebase';
 
 const Popup = ({ entry, onClose }) => {
   const { imgurl, price, title, author, condition, summary, id, email } = entry;
-  //   console.log({ entry });
 
   // condition tag
   let conditionClass;
@@ -21,6 +21,36 @@ const Popup = ({ entry, onClose }) => {
     default:
       conditionClass = '';
   }
+
+  const handleContactSeller = async () => {
+    try {
+      var base = 'mailto:' + email;
+      var subject = '?subject=Offer from Book Bazaar';
+      var msg =
+        "&body=I'm interested in buying your copy of " +
+        title +
+        ' via Book Bazaar!';
+
+      const docSnapshot = await getDoc(doc(firestore, 'Books', id));
+
+      // deleting book from firebase
+      if (docSnapshot.exists()) {
+        // delete doc
+        await deleteDoc(doc(firestore, 'Books', id));
+        window.open(base + subject + msg);
+        console.log('Entry deleted successfully');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1800);
+      } else {
+        console.log('Document does not exist in the Firestore database');
+        
+      }
+    } catch (error) {
+      console.error('Error deleting entry:', error);
+    }
+  };
+
   return (
     <div className="popup-overlay">
       <div className="popup">
@@ -43,7 +73,7 @@ const Popup = ({ entry, onClose }) => {
               readOnly={true}
               style={{ fontFamily: 'inherit', fontSize: 'inherit' }}
             ></textarea>
-            <button className="contact-button">Contact Seller</button>
+            <button className="contact-button" onClick={handleContactSeller}>Contact Seller</button>
             <button onClick={onClose}>Close</button>
           </div>
         </div>
