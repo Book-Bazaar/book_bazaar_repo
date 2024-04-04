@@ -68,12 +68,16 @@ function Popup({ onClose }) {
         return response.json();
       })
       .then((data) => {
+        const title = data.items[0]?.volumeInfo?.title || ''; // Replace empty title with space
+        const author = data.items[0]?.volumeInfo?.authors?.[0] || ''; // Replace empty author with space
+        const summary = data.items[0]?.volumeInfo?.description || ''; // Replace empty summary with space
+        const imgurl = data.items[0]?.volumeInfo?.imageLinks?.smallThumbnail || ''; // Replace empty imgurl with space
         setFormData({
           ...formData,
-          title: data.items[0].volumeInfo.title,
-          author: data.items[0].volumeInfo.authors[0],
-          summary: data.items[0].volumeInfo.description,
-          imgurl: data.items[0].volumeInfo.imageLinks.smallThumbnail,
+        title: title,
+        author: author,
+        summary: summary,
+        imgurl: imgurl,
         });
         setFetchSuccess(true); // Mark fetch as successful
       })
