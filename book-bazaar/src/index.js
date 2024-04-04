@@ -14,6 +14,7 @@ import Login from './Pages/login';
 import Protected from './Components/protected.jsx';
 import Home from './Pages/home';
 import ForgotPassword from './Pages/forgotPassword.jsx';
+import myListings from './Pages/myListings.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       {/* <Route path="/" element={<Protected />}> */}
       <Route path="/" index element={<Home />} />
       <Route path="/forgot-password" Component={ForgotPassword} />
+      <Route path="my-listings" element={<myListings />} />
       {/* </Route> */}
     </Route>
   )

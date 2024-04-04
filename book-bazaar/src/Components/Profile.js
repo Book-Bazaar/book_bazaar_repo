@@ -19,7 +19,9 @@ function Menu({ onClose }) {
     <div className="menu-container">
       <div className="menu">
         <ul>
-          <li>My Listings</li>
+          <li><Link to="/my-listings">
+              <button>My Listings</button>
+            </Link></li>
           <li>Change Password</li>
           <li>
             <button onClick={handleSignOut}>Sign Out</button>
