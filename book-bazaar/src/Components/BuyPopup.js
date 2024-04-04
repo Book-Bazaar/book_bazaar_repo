@@ -89,7 +89,7 @@ const Popup = ({ entry, onClose }) => {
               style={{ fontFamily: 'inherit', fontSize: 'inherit' }}
             ></textarea>
             {auth.currentUser.email === email && (
-                <button background-color="red" onClick={handleDeleteListing} >Delete Listing</button>
+                <button style={{ background:'red' }} onClick={handleDeleteListing} >Delete Listing</button>
             )}
             {!auth.currentUser || auth.currentUser.email !== email && (
               <button className="contact-button" onClick={handleContactSeller}>Contact Seller</button>
