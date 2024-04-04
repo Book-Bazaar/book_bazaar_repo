@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className="app">
       <Title setSearchQuery={setSearchQuery} />
-      <div className="body">
+      <div className="body-body">
         <Sidebar />
         <Marketplace searchQuery={searchQuery} />
       </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Popup from './BuyPopup';
 import Tile from './Tile';
-import Filter from './Filter';
-import './Marketplace.css'; // Import CSS file for animations
+// import Filter from './Filter';
+import './Marketplace.css';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const Marketplace = ({ searchQuery }) => {
@@ -63,7 +63,7 @@ const Marketplace = ({ searchQuery }) => {
           <Tile key={entry.id} entry={entry} onClick={handleOpenPopup} />
         ))
       ) : (
-        <div>No results found</div>
+        <div className="no-results">No results found...</div>
       )}
       {isOpen && <Popup entry={selectedEntry} onClose={handleClosePopup} />}
     </div>

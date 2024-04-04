@@ -11,8 +11,15 @@ export function SearchBar({ setSearchQuery }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
-    setSearchQuery(input);
+
+    // Regular expression to match only English letters
+    const validCharactersRegex = /^[a-zA-Z]*$/;
+
+    // Check if input consists only of English letters
+    if (validCharactersRegex.test(input)) {
+      console.log(input);
+      setSearchQuery(input);
+    }
   };
 
   return (

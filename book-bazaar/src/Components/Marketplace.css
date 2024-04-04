@@ -24,6 +24,14 @@
   display: block;
 }
 
+.no-results {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  font-weight: bold; /* Make text bold */
+  margin: 50px auto;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -38,7 +46,7 @@
   overflow: hidden;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 10px; /* Adjust the margin as needed */
-  display: flex; /* Use flexbox for layout */
+  display: flex;
   flex-direction: column; /* Stack items vertically */
   position: relative;
   z-index: 1;
