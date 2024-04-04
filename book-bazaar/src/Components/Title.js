@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 import { Profile } from './Profile';
 // import { Slbuttons } from './Slbuttons.js';
 import logo from '../Assets/book_bazaar_logo.png';
-// import profile_icon from '../Assets/user-solid.svg';
+import { Link } from 'react-router-dom'; // Import Link component for routing
 
 function Title({ setSearchQuery }) {
   // console.log({ setResults });
@@ -14,7 +14,9 @@ function Title({ setSearchQuery }) {
   return (
     <div className="Title">
       {/* Logo space */}
-      <img src={logo} alt="" className="logo" />
+      <Link to="/">
+        <img src={logo} alt="" className="logo" />
+      </Link>
       {/* Search bar space */}
       <SearchBar setSearchQuery={setSearchQuery} />
 
