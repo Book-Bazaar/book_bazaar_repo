@@ -30,6 +30,7 @@ function Sidebar() {
   );
 }
 
+
 function Popup({ onClose }) {
   // const user = auth.currentUser;
   // const email = user.email;
@@ -118,6 +119,9 @@ function Popup({ onClose }) {
         console.log('no user signed in');
       }
 
+      //Date and Time stuff
+      const currentDate = new Date().toISOString(); 
+
       console.log(JSON.stringify(formData, null, 2)); // Printing JSON data to console
 
       //Adds books containing fields from formData to FireBase. //Auth: James
@@ -130,6 +134,8 @@ function Popup({ onClose }) {
         price: formData.price,
         condition: formData.condition,
         email: formData.email,
+        datePosted: currentDate,
+        offers: "",
         // email: 'example@gmail.com',
       });
 
