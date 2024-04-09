@@ -1,6 +1,6 @@
 import React from 'react';
 import './BuyPopup.css';
-import {collection, deleteDoc, getDocs, doc, getFirestore, getDoc} from 'firebase/firestore';
+import {collection, deleteDoc, getDocs, doc, getFirestore, getDoc, updateDoc, arrayUnion} from 'firebase/firestore';
 import {firestore, colRefBooks, auth} from '../firebase';
 
 
@@ -33,8 +33,14 @@ const Popup = ({ entry, onClose }) => {
 
       const docSnapshot = await getDoc(doc(firestore, 'Books', id));
 
+      // Add user email to offer array field
+      await updateDoc((doc(firestore, 'Books', id)), {
+        offers: arrayUnion(auth.currentUser.email)
+      });
+
       if (docSnapshot.exists()) {
-        await deleteDoc(doc(firestore, 'Books', id));
+        //  VVV Uncomment to delete doc
+        // await deleteDoc(doc(firestore, 'Books', id));
         window.open(base + subject + msg);
         console.log('Entry deleted successfully');
         setTimeout(() => {

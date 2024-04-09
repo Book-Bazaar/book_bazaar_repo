@@ -1,0 +1,52 @@
+.inbox-container {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style for each inbox item */
+.inbox-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+/* Style for image container */
+.inbox-image-container {
+    flex: 0 0 50px; /* Adjust the width of the image container */
+    margin-right: 10px;
+}
+
+/* Style for text container */
+.inbox-text-container {
+    flex: 1;
+    margin-right: 10px;
+}
+
+/* Style for button container */
+.inbox-button-container {
+    flex: 0 0 100px; /* Adjust the width of the button container */
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style for square buttons */
+.button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style for green button */
+.button-green {
+    background-color: green;
+}
+
+/* Style for red button */
+.button-red {
+    background-color: red;
+}

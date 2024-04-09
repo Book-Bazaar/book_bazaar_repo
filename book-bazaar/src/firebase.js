@@ -36,6 +36,6 @@ getDocs(colRef).then((snapshot) => {
 });
 
 export const auth = getAuth();
-export const firestore = getFirestore();
+export const firestore = getFirestore(app);
 export const colRefBooks = collection(db, 'Books');
 export default app;

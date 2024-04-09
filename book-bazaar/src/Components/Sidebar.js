@@ -135,7 +135,7 @@ function Popup({ onClose }) {
         condition: formData.condition,
         email: formData.email,
         datePosted: currentDate,
-        offers: "",
+        offers: [],
         // email: 'example@gmail.com',
       });
 
