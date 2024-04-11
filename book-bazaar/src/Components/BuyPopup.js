@@ -78,6 +78,26 @@ const Popup = ({ entry, onClose }) => {
     }
   };
 
+  const handleChangePrice = async (newPrice) => {
+    try {
+      const docSnapshot = await getDoc(doc(firestore, 'Books', id));
+
+      if (docSnapshot.exists()) {
+        await updateDoc(doc(firestore, 'Books', id), {
+          price: newPrice,
+        });
+        console.log('Entry deleted successfully');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        console.log('Document does not exist in the Firestore database');
+      }
+    } catch (error) {
+      console.error('Error deleting entry:', error);
+    }
+  };
+
   return (
     <div className="popup-overlay">
       <div className="popup">
@@ -103,7 +123,7 @@ const Popup = ({ entry, onClose }) => {
             {auth.currentUser.email === email && (
               <button
                 style={{ background: 'red' }}
-                onClick={handleDeleteListing}
+                // onClick={handleChangePrice}
               >
                 Delete Listing
               </button>
@@ -112,11 +132,14 @@ const Popup = ({ entry, onClose }) => {
               (auth.currentUser.email !== email && (
                 <button
                   className="contact-button"
-                  onClick={handleContactSeller}
+                  // onClick={handleChangePrice}
                 >
                   Contact Seller
                 </button>
               ))}
+            {auth.currentUser.email === email && (
+              <button onClick={handleDeleteListing}>Edit Price</button>
+            )}
             <button onClick={onClose}>Close</button>
           </div>
         </div>
