@@ -1,12 +1,17 @@
 import React from 'react';
 import './BuyPopup.css';
-import {collection, deleteDoc, getDocs, doc, getFirestore, getDoc, updateDoc, arrayUnion} from 'firebase/firestore';
-import {firestore, colRefBooks, auth} from '../firebase';
-
+import {
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+} from 'firebase/firestore';
+import { firestore, auth } from '../firebase';
 
 const Popup = ({ entry, onClose }) => {
   const { imgurl, price, title, author, condition, summary, id, email } = entry;
-  
+
   let conditionClass;
   switch (condition) {
     case 'new':
@@ -24,24 +29,25 @@ const Popup = ({ entry, onClose }) => {
 
   const handleContactSeller = async () => {
     try {
-      const base = 'mailto:' + email;
-      const subject = '?subject=Offer from Book Bazaar';
-      const msg =
-        "&body=I'm interested in buying your copy of " +
-        title +
-        ' via Book Bazaar!';
+      // const base = 'mailto:' + email;
+      // const subject = '?subject=Offer from Book Bazaar';
+      // const msg =
+      //   "&body=I'm interested in buying your copy of " +
+      //   title +
+      //   ' via Book Bazaar!';
 
       const docSnapshot = await getDoc(doc(firestore, 'Books', id));
 
       // Add user email to offer array field
-      await updateDoc((doc(firestore, 'Books', id)), {
-        offers: arrayUnion(auth.currentUser.email)
+      await updateDoc(doc(firestore, 'Books', id), {
+        offers: arrayUnion(auth.currentUser.email),
       });
 
       if (docSnapshot.exists()) {
         //  VVV Uncomment to delete doc
         // await deleteDoc(doc(firestore, 'Books', id));
-        window.open(base + subject + msg);
+
+        // window.open(base + subject + msg);
         console.log('Entry deleted successfully');
         setTimeout(() => {
           window.location.reload();
@@ -95,11 +101,22 @@ const Popup = ({ entry, onClose }) => {
               style={{ fontFamily: 'inherit', fontSize: 'inherit' }}
             ></textarea>
             {auth.currentUser.email === email && (
-                <button style={{ background:'red' }} onClick={handleDeleteListing} >Delete Listing</button>
+              <button
+                style={{ background: 'red' }}
+                onClick={handleDeleteListing}
+              >
+                Delete Listing
+              </button>
             )}
-            {!auth.currentUser || auth.currentUser.email !== email && (
-              <button className="contact-button" onClick={handleContactSeller}>Contact Seller</button>
-            )}
+            {!auth.currentUser ||
+              (auth.currentUser.email !== email && (
+                <button
+                  className="contact-button"
+                  onClick={handleContactSeller}
+                >
+                  Contact Seller
+                </button>
+              ))}
             <button onClick={onClose}>Close</button>
           </div>
         </div>

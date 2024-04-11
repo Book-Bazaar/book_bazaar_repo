@@ -1,0 +1,16 @@
+.listing-container {
+  height: 90vh; /* Set a fixed height for the inbox container */
+  overflow-y: auto; /* Add vertical scrollbar when content overflows */
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-header {
+  font-size: bold;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}

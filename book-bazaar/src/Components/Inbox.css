@@ -6,6 +6,16 @@
   flex-direction: column;
 }
 
+.inbox-header {
+  font-size: bold;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 /* Style for each inbox item */
 .inbox-item {
   display: flex;

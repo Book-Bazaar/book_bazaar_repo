@@ -3,8 +3,8 @@ import './Sidebar.css';
 import Filter from './Filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { collection, addDoc } from 'firebase/firestore';
-import { firestore, colRefBooks, auth } from '../firebase';
+import { addDoc } from 'firebase/firestore';
+import { colRefBooks, auth } from '../firebase';
 
 function Sidebar() {
   const applyFilter = (filterOptions) => {
@@ -29,7 +29,6 @@ function Sidebar() {
     </div>
   );
 }
-
 
 function Popup({ onClose }) {
   // const user = auth.currentUser;
@@ -72,13 +71,14 @@ function Popup({ onClose }) {
         const title = data.items[0]?.volumeInfo?.title || ''; // Replace empty title with space
         const author = data.items[0]?.volumeInfo?.authors?.[0] || ''; // Replace empty author with space
         const summary = data.items[0]?.volumeInfo?.description || ''; // Replace empty summary with space
-        const imgurl = data.items[0]?.volumeInfo?.imageLinks?.smallThumbnail || ''; // Replace empty imgurl with space
+        const imgurl =
+          data.items[0]?.volumeInfo?.imageLinks?.smallThumbnail || ''; // Replace empty imgurl with space
         setFormData({
           ...formData,
-        title: title,
-        author: author,
-        summary: summary,
-        imgurl: imgurl,
+          title: title,
+          author: author,
+          summary: summary,
+          imgurl: imgurl,
         });
         setFetchSuccess(true); // Mark fetch as successful
       })
@@ -120,7 +120,7 @@ function Popup({ onClose }) {
       }
 
       //Date and Time stuff
-      const currentDate = new Date().toISOString(); 
+      const currentDate = new Date().toISOString();
 
       console.log(JSON.stringify(formData, null, 2)); // Printing JSON data to console
 
@@ -135,7 +135,7 @@ function Popup({ onClose }) {
         condition: formData.condition,
         email: formData.email,
         datePosted: currentDate,
-        offers: [],
+        offers: [''],
         // email: 'example@gmail.com',
       });
 

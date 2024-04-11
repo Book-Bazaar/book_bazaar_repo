@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Title.css';
 import './Menu.css';
-import profile_icon from '../Assets/user-solid.svg';
 import md5 from 'md5'; // Import md5 library
 import { Link } from 'react-router-dom'; // Import Link component for routing
 import { auth } from '../firebase'; // Import Firebase auth instance
