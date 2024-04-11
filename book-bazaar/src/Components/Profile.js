@@ -62,12 +62,15 @@ export function Profile() {
     <div>
       <div className="auth-buttons">
         {user ? (
-          <img
-            src={getGravatarUrl(user.email)}
-            alt=""
-            className="profile"
-            onClick={toggle}
-          />
+          <div className="profile=container">
+            <img
+              src={getGravatarUrl(user.email)}
+              alt={auth.currentUser.email}
+              className="profile"
+              onClick={toggle}
+            />
+            {showMenu && <Menu onClose={toggle} />}
+          </div>
         ) : (
           <>
             <Link to="/signup">
@@ -79,7 +82,7 @@ export function Profile() {
           </>
         )}
       </div>
-      {showMenu && <Menu onClose={toggle} />}
+      {/* {showMenu && <Menu onClose={toggle} />} */}
     </div>
   );
 }

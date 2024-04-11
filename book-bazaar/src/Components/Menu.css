@@ -1,4 +1,13 @@
 /* .menu-container {
+  position: sticky;
+  top: 80px;
+  right: 30px;
+  width: 200px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+} */
+.menu-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,15 +16,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 2;
-} */
-.menu-container {
-  position: fixed;
-  top: 80px;
-  right: 30px;
-  width: 200px;
-  flex-direction: column;
   align-items: center;
   z-index: 2;
 }
@@ -34,12 +34,17 @@
 }
 
 .menu ul {
+  position: relative;
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
 .menu ul li {
+  margin-right: 5px;
   margin-bottom: 10px;
 }
 
