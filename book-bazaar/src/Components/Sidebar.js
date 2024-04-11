@@ -71,8 +71,7 @@ function Popup({ onClose }) {
         const title = data.items[0]?.volumeInfo?.title || ''; // Replace empty title with space
         const author = data.items[0]?.volumeInfo?.authors?.[0] || ''; // Replace empty author with space
         const summary = data.items[0]?.volumeInfo?.description || ''; // Replace empty summary with space
-        const imgurl =
-          data.items[0]?.volumeInfo?.imageLinks?.smallThumbnail || ''; // Replace empty imgurl with space
+        const imgurl = data.items[0]?.volumeInfo?.imageLinks?.thumbnail || ''; // Replace empty imgurl with space
         setFormData({
           ...formData,
           title: title,
@@ -91,7 +90,7 @@ function Popup({ onClose }) {
   };
 
   const uploadBook = async () => {
-    const priceRegex = /^(?!0\d)\d+(\.\d{1,2})?$/; // Regular expression to match valid price formats
+    const priceRegex = /^(?!0\d)\d+$/; // Regular expression to match valid price formats
     if (!auth.currentUser) {
       setErrorMessage('User is not logged in.');
       setSuccessMessage('');

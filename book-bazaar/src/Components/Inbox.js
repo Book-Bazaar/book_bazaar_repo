@@ -126,38 +126,42 @@ function Inbox() {
 
   return (
     <div className="inbox-container">
-      <div className="inbox-header">My Inbox</div>
-      {deleteConfirmation && (
-        <div className="confirmation-message">Offer has been accepted</div>
-      )}
-      {fetchedData.map((entry) => (
-        <div key={`${entry.id}-${entry.offers}`} className="inbox-item">
-          <div className="inbox-image-container">
-            <img src={entry.imgurl} alt="" />
+      <div className="inbox-container">
+        <div className="inbox-header">My Inbox</div>
+        {deleteConfirmation && (
+          <div className="confirmation-message">Offer has been accepted</div>
+        )}
+        {fetchedData.map((entry) => (
+          <div key={`${entry.id}-${entry.offers}`} className="inbox-item">
+            <div className="inbox-image-container">
+              <img src={entry.imgurl} alt="" />
+            </div>
+            <div className="inbox-text-container">
+              {entry.title}
+              <div className="inbox-text-email-container">{entry.offers}</div>
+            </div>
+            <div className="inbox-button-container">
+              <button
+                className="inbox-button button-green"
+                onClick={() =>
+                  handleDelete(entry.id, entry.offers, entry.title)
+                }
+              >
+                <FontAwesomeIcon icon={faCheck} style={{ color: 'white' }} />
+              </button>
+              <button
+                className="inbox-button button-red"
+                // onClick={() => handleRemoveEmail(entry.id, offer)}
+                // onClick={() => handleRemoveEmail(entry.id, emailToRemove)}
+                onClick={() => handleRemoveEmail(entry.id, entry.offers)}
+              >
+                <FontAwesomeIcon icon={faTimes} style={{ color: 'white' }} />
+              </button>
+              {/* Optionally add a confirmation modal for deletion */}
+            </div>
           </div>
-          <div className="inbox-text-container">
-            {entry.title}
-            <div className="inbox-text-email-container">{entry.offers}</div>
-          </div>
-          <div className="inbox-button-container">
-            <button
-              className="inbox-button button-green"
-              onClick={() => handleDelete(entry.id, entry.offers, entry.title)}
-            >
-              <FontAwesomeIcon icon={faCheck} style={{ color: 'white' }} />
-            </button>
-            <button
-              className="inbox-button button-red"
-              // onClick={() => handleRemoveEmail(entry.id, offer)}
-              // onClick={() => handleRemoveEmail(entry.id, emailToRemove)}
-              onClick={() => handleRemoveEmail(entry.id, entry.offers)}
-            >
-              <FontAwesomeIcon icon={faTimes} style={{ color: 'white' }} />
-            </button>
-            {/* Optionally add a confirmation modal for deletion */}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

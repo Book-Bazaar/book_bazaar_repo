@@ -61,7 +61,7 @@ export function Profile() {
     <div>
       <div className="auth-buttons">
         {user ? (
-          <div className="profile=container">
+          <div className="profile-container">
             <img
               src={getGravatarUrl(user.email)}
               alt={auth.currentUser.email}

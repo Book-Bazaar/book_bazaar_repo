@@ -14,11 +14,76 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import './Inbox.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const MyListing = () => {
+  const [fetchedData, setFetchedData] = useState(() => {
+    try {
+      const storedData = localStorage.getItem('inboxData');
+      return storedData ? JSON.parse(storedData) : [];
+    } catch (error) {
+      console.error('Error retrieving inbox data from local storage:', error);
+      return [];
+    }
+  });
+  const [loading, setLoading] = useState(true);
+  const currentUser = auth.currentUser;
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false); // New state variable for delete confirmation
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = getFirestore();
+        let fetchedEntries = [];
+        if (currentUser) {
+          const q = query(
+            collection(db, 'Books'),
+            where('email', '==', currentUser.email)
+          );
+          const snapshot = await getDocs(q);
+          snapshot.forEach((doc) => {
+            fetchedEntries.push({
+              id: doc.id,
+              ...doc.data(),
+            });
+          });
+        }
+        setTimeout(() => {
+          setFetchedData(fetchedEntries);
+          setLoading(false);
+        }, 1200);
+        localStorage.setItem('inboxData', JSON.stringify(fetchedEntries));
+        console.log('Success');
+      } catch (error) {
+        console.error('Error fetching entries: ', error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+    console.log(fetchData);
+  }, [currentUser]);
+
   return (
     <div className="listing-container">
       <div className="listing-header">My Listings</div>
+      <div className="listing-container">
+        {fetchedData.map((entry) => (
+          <div key={`${entry.id}`} className="inbox-item">
+            <div className="listing-image-container">
+              <img src={entry.imgurl} alt="" />
+            </div>
+            <div className="listing-text-container">{entry.title}</div>
+            <div className="listing-price-container">${entry.price}</div>
+            <div className="listing-button-container">
+              <button className="listing-button button-blue">
+                <FontAwesomeIcon icon={faEdit} style={{ color: 'white' }} />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -51,6 +51,10 @@
   flex: 0 0 100px; /* Adjust the width of the button container */
 }
 
+.inbox-image-container img {
+  max-width: 50px;
+}
+
 /* Style for square buttons */
 .inbox-button {
   width: 50px;
