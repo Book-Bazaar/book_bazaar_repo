@@ -59,7 +59,7 @@ function Inbox() {
         setTimeout(() => {
           setFetchedData(fetchedEntries);
           setLoading(false);
-        }, 1200);
+        }, 200);
         localStorage.setItem('inboxData', JSON.stringify(fetchedEntries));
         console.log('Success');
       } catch (error) {

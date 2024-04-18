@@ -20,7 +20,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 const MyListing = () => {
   const [fetchedData, setFetchedData] = useState(() => {
     try {
-      const storedData = localStorage.getItem('inboxData');
+      const storedData = localStorage.getItem('listingData');
       return storedData ? JSON.parse(storedData) : [];
     } catch (error) {
       console.error('Error retrieving inbox data from local storage:', error);
@@ -52,8 +52,8 @@ const MyListing = () => {
         setTimeout(() => {
           setFetchedData(fetchedEntries);
           setLoading(false);
-        }, 1200);
-        localStorage.setItem('inboxData', JSON.stringify(fetchedEntries));
+        }, 200);
+        localStorage.setItem('listingData', JSON.stringify(fetchedEntries));
         console.log('Success');
       } catch (error) {
         console.error('Error fetching entries: ', error);
