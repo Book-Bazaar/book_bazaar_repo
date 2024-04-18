@@ -5,7 +5,7 @@ import Tile from './Tile';
 import './Marketplace.css';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-const Marketplace = ({ searchQuery }) => {
+const Marketplace = ({ searchQuery, applyFilter }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,6 +21,10 @@ const Marketplace = ({ searchQuery }) => {
           id: doc.id,
           ...doc.data(),
         }));
+
+        fetchedEntries.sort(
+          (a, b) => new Date(b.datePosted) - new Date(a.datePosted)
+        );
 
         // Simulate a delay before setting loading to false
         setTimeout(() => {
@@ -38,12 +42,64 @@ const Marketplace = ({ searchQuery }) => {
 
   const filteredBooks = entries.filter((entry) => {
     const query = (searchQuery || '').toString().toLowerCase();
-    return (
+
+    // Filter by search query
+    const matchesSearchQuery =
       (entry.isbn && entry.isbn.toString().toLowerCase().includes(query)) ||
       entry.title.toLowerCase().includes(query) ||
-      entry.author.toLowerCase().includes(query)
-    );
+      entry.author.toLowerCase().includes(query);
+
+    // Filter by applyFilter conditions
+    // console.log(applyFilter);
+    // console.log(applyFilter);
+    const matchesFilter =
+      !applyFilter ||
+      ((applyFilter.sort === 'latest' || applyFilter.sort === 'oldest') &&
+        entry.datePosted) ||
+      applyFilter.sort === 'title-az' ||
+      applyFilter.sort === 'title-za' ||
+      applyFilter.sort === 'price-lh' ||
+      applyFilter.sort === 'price-hl' ||
+      !applyFilter.condition ||
+      entry.condition === applyFilter.condition;
+
+    return matchesSearchQuery && matchesFilter;
   });
+
+  // Sort filteredBooks by datePosted from oldest to newest if applyFilter.sort === 'oldest'
+  if (applyFilter && applyFilter.sort === 'oldest') {
+    filteredBooks.sort(
+      (a, b) =>
+        new Date(a.datePosted).getTime() - new Date(b.datePosted).getTime()
+    );
+  }
+
+  // Sort filteredBooks by datePosted from newest to oldest if applyFilter.sort === 'latest'
+  if (applyFilter && applyFilter.sort === 'latest') {
+    filteredBooks.sort(
+      (a, b) =>
+        new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime()
+    );
+  }
+
+  if (applyFilter && applyFilter.sort === 'title-az') {
+    filteredBooks.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  // Sort filteredBooks by title Z-A if applyFilter.sort === 'title-za'
+  if (applyFilter && applyFilter.sort === 'title-za') {
+    filteredBooks.sort((a, b) => b.title.localeCompare(a.title));
+  }
+
+  // Sort filteredBooks by price lowest to highest if applyFilter.sort === 'price-lh'
+  if (applyFilter && applyFilter.sort === 'price-lh') {
+    filteredBooks.sort((a, b) => a.price - b.price);
+  }
+
+  // Sort filteredBooks by price highest to lowest if applyFilter.sort === 'price-hl'
+  if (applyFilter && applyFilter.sort === 'price-hl') {
+    filteredBooks.sort((a, b) => b.price - a.price);
+  }
 
   const handleOpenPopup = (entry) => {
     setIsOpen(true);

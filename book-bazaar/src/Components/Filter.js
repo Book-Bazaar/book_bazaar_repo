@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './Filter.css';
 
-const Filter = ({ applyFilter }) => {
+const Filter = ({ setApplyFilter }) => {
   const [sort, setSort] = useState('latest');
   const [condition, setCondition] = useState('');
 
   const handleApplyFilter = () => {
-    applyFilter({ sort, condition });
+    setApplyFilter({ sort, condition });
   };
 
   return (

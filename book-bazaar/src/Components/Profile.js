@@ -20,7 +20,7 @@ function Menu({ onClose }) {
         <ul>
           <li>
             <Link to="/my-listings">
-              <div>My Listings</div>
+              <div className="">My Listings</div>
             </Link>
           </li>
           <li>

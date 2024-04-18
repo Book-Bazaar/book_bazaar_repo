@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [applyFilter, setApplyFilter] = useState('');
 
   const navigate = useNavigate();
 
@@ -24,8 +25,8 @@ const Home = () => {
     <div className="app">
       <Title setSearchQuery={setSearchQuery} />
       <div className="body-body">
-        <Sidebar />
-        <Marketplace searchQuery={searchQuery} />
+        <Sidebar setApplyFilter={setApplyFilter} />
+        <Marketplace searchQuery={searchQuery} applyFilter={applyFilter} />
       </div>
       {/* <button onClick={handleLogout}>Logout</button> */}
     </div>

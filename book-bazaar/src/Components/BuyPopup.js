@@ -39,21 +39,27 @@ const Popup = ({ entry, onClose }) => {
       const docSnapshot = await getDoc(doc(firestore, 'Books', id));
 
       // Add user email to offer array field
-      await updateDoc(doc(firestore, 'Books', id), {
-        offers: arrayUnion(auth.currentUser.email),
-      });
+      if (!docSnapshot.data().offers.includes(auth.currentUser.email)) {
+        await updateDoc(doc(firestore, 'Books', id), {
+          offers: arrayUnion(auth.currentUser.email),
+        });
 
-      if (docSnapshot.exists()) {
-        //  VVV Uncomment to delete doc
-        // await deleteDoc(doc(firestore, 'Books', id));
+        if (docSnapshot.exists()) {
+          //  VVV Uncomment to delete doc
+          // await deleteDoc(doc(firestore, 'Books', id));
 
-        // window.open(base + subject + msg);
-        console.log('Entry deleted successfully');
-        setTimeout(() => {
-          window.location.reload();
-        }, 1800);
+          // window.open(base + subject + msg);
+          console.log('Entry deleted successfully');
+          setTimeout(() => {
+            window.location.reload();
+          }, 1800);
+        } else {
+          console.log('Document does not exist in the Firestore database');
+        }
       } else {
-        console.log('Document does not exist in the Firestore database');
+        console.log(
+          `${auth.currentUser.email} already exists in the offers array.`
+        );
       }
     } catch (error) {
       console.error('Error deleting entry:', error);
@@ -123,7 +129,7 @@ const Popup = ({ entry, onClose }) => {
             {auth.currentUser.email === email && (
               <button
                 style={{ background: 'red' }}
-                // onClick={handleChangePrice}
+                onClick={handleDeleteListing}
               >
                 Delete Listing
               </button>
@@ -132,13 +138,13 @@ const Popup = ({ entry, onClose }) => {
               (auth.currentUser.email !== email && (
                 <button
                   className="contact-button"
-                  // onClick={handleChangePrice}
+                  onClick={handleContactSeller}
                 >
                   Contact Seller
                 </button>
               ))}
             {auth.currentUser.email === email && (
-              <button onClick={handleDeleteListing}>Edit Price</button>
+              <button onClick={handleChangePrice}>Edit Price</button>
             )}
             <button onClick={onClose}>Close</button>
           </div>
