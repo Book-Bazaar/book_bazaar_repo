@@ -126,7 +126,7 @@ const Popup = ({ entry, onClose }) => {
               readOnly={true}
               style={{ fontFamily: 'inherit', fontSize: 'inherit' }}
             ></textarea>
-            {auth.currentUser.email === email && (
+            {auth.currentUser && auth.currentUser.email === email && (
               <button
                 style={{ background: 'red' }}
                 onClick={handleDeleteListing}
@@ -143,7 +143,7 @@ const Popup = ({ entry, onClose }) => {
                   Contact Seller
                 </button>
               ))}
-            {auth.currentUser.email === email && (
+            {auth.currentUser && auth.currentUser.email === email && (
               <button onClick={handleChangePrice}>Edit Price</button>
             )}
             <button onClick={onClose}>Close</button>
