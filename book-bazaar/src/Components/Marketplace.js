@@ -3,7 +3,7 @@ import Popup from './BuyPopup';
 import Tile from './Tile';
 // import Filter from './Filter';
 import './Marketplace.css';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, collectionGroup } from 'firebase/firestore';
 
 const Marketplace = ({ searchQuery, applyFilter }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,7 +40,7 @@ const Marketplace = ({ searchQuery, applyFilter }) => {
     fetchData();
   }, []);
 
-  const filteredBooks = entries.filter((entry) => {
+  var filteredBooks = entries.filter((entry) => {
     const query = (searchQuery || '').toString().toLowerCase();
 
     // Filter by search query
@@ -65,6 +65,31 @@ const Marketplace = ({ searchQuery, applyFilter }) => {
 
     return matchesSearchQuery && matchesFilter;
   });
+
+  // Handles the condition filter event.
+  switch(applyFilter.condition){
+    
+    case 'new':
+      filteredBooks = filteredBooks.filter((entry) => (
+        entry.condition === 'new'
+      ));
+      break;
+
+    case 'used':
+      filteredBooks = filteredBooks.filter((entry) => (
+        entry.condition === 'used'
+      ));
+      break;
+
+    case 'poor':
+      filteredBooks = filteredBooks.filter((entry) => (
+        entry.condition === 'poor'
+      ));
+      break;
+
+    default:
+      break;
+  };
 
   // Sort filteredBooks by datePosted from oldest to newest if applyFilter.sort === 'oldest'
   if (applyFilter && applyFilter.sort === 'oldest') {

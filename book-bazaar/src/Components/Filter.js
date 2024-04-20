@@ -24,7 +24,7 @@ const Filter = ({ setApplyFilter }) => {
           <option value="title-az">Title: A-Z</option>
           <option value="title-za">Title: Z-A</option>
           <option value="price-lh">Price: Low to High</option>
-          <option value="price-hl">Price: Low to High</option>
+          <option value="price-hl">Price: High to Low</option>
         </select>
       </div>
       <div className="filter-option">
