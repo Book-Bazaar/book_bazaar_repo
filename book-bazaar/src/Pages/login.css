@@ -290,3 +290,12 @@ body {
   border: transparent;
   cursor: pointer;
 }
+
+.error-message {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  font-size: 1em;
+}
