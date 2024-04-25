@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
@@ -9,11 +9,16 @@ import logoSignup from '../Assets/book_bazaar_logo.png';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setError('Passwords do not match.');
+      return;
+    }
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -63,7 +68,18 @@ const SignUp = () => {
               />
             </div>
 
-            {/* LOGIN BUTTON */}
+            {/* INPUT FOR CONFIRM PASSWORD */}
+            <div className="inputBox">
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+
+            {/* SIGNUP BUTTON */}
             <div className="inputBox">
               <button type="submit" className="signup-button">
                 Sign-Up
