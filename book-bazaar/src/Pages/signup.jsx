@@ -4,6 +4,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './signup.css';
+import logo from '../Assets/book_bazaar_logo.png';
 import logoSignup from '../Assets/book_bazaar_logo.png';
 
 const SignUp = () => {
@@ -44,7 +45,9 @@ const SignUp = () => {
         <div className="content">
           {error && <p className="error-message">{error}</p>}
           <h1>SignUp</h1>
-          <img src={logoSignup} alt="" className="logoSignup" />
+          <Link to="/">
+            <img src={logo} alt="" className="logoSignup" />
+          </Link>
           <form onSubmit={handleSubmit} className="signup-form">
             {/* INPUT FOR EMAIL */}
             <div className="inputBox">
