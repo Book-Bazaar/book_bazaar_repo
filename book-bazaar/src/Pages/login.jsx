@@ -8,7 +8,7 @@ import './login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // State for error message
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -21,7 +21,7 @@ const Login = () => {
       navigate('/');
     } catch (error) {
       console.error('Login Error:', error.message);
-      setErrorMessage('Invalid email or password.'); // Set error message
+      setErrorMessage('Invalid email or password.');
     }
   };
 

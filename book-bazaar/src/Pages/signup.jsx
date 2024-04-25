@@ -1,16 +1,15 @@
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
-import { useState } from 'react';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './signup.css';
+import logoSignup from '../Assets/book_bazaar_logo.png';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -21,14 +20,16 @@ const SignUp = () => {
         email,
         password
       );
-      console.log(userCredential);
       const user = userCredential.user;
       localStorage.setItem('token', user.accessToken);
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/');
     } catch (error) {
-      setError(error.message);
-      console.error();
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email is already in use.');
+      } else {
+        setError(error.message);
+      }
     }
   };
 
@@ -36,8 +37,9 @@ const SignUp = () => {
     <div className="container">
       <div className="drop">
         <div className="content">
-          {error && <p>{error}</p>}
+          {error && <p className="error-message">{error}</p>}
           <h1>SignUp</h1>
+          <img src={logoSignup} alt="" className="logoSignup" />
           <form onSubmit={handleSubmit} className="signup-form">
             {/* INPUT FOR EMAIL */}
             <div className="inputBox">
