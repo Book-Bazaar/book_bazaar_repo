@@ -1,7 +1,6 @@
 import './MyListing.css';
 import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase';
-// import 'firebase/firestore';
 import {
   getFirestore,
   collection,
@@ -9,27 +8,15 @@ import {
   where,
   query,
   deleteDoc,
-  doc,
-  updateDoc,
-  getDoc,
-} from 'firebase/firestore';
-import './Inbox.css';
+  doc, // Import 'doc' function
+} from 'firebase/firestore'; // Add 'doc' import
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const MyListing = () => {
-  const [fetchedData, setFetchedData] = useState(() => {
-    try {
-      const storedData = localStorage.getItem('listingData');
-      return storedData ? JSON.parse(storedData) : [];
-    } catch (error) {
-      console.error('Error retrieving inbox data from local storage:', error);
-      return [];
-    }
-  });
+  const [fetchedData, setFetchedData] = useState([]);
   const [loading, setLoading] = useState(true);
   const currentUser = auth.currentUser;
-  const [deleteConfirmation, setDeleteConfirmation] = useState(false); // New state variable for delete confirmation
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,11 +36,8 @@ const MyListing = () => {
             });
           });
         }
-        setTimeout(() => {
-          setFetchedData(fetchedEntries);
-          setLoading(false);
-        }, 200);
-        localStorage.setItem('listingData', JSON.stringify(fetchedEntries));
+        setFetchedData(fetchedEntries);
+        setLoading(false);
         console.log('Success');
       } catch (error) {
         console.error('Error fetching entries: ', error);
@@ -62,27 +46,47 @@ const MyListing = () => {
     };
 
     fetchData();
-    console.log(fetchData);
   }, [currentUser]);
+
+  const handleDelete = async (id) => {
+    try {
+      const db = getFirestore();
+      await deleteDoc(doc(db, 'Books', id));
+      setFetchedData(fetchedData.filter((entry) => entry.id !== id));
+      console.log('Document successfully deleted!');
+    } catch (error) {
+      console.error('Error removing document: ', error);
+    }
+  };
 
   return (
     <div className="listing-container">
       <div className="listing-header">My Listings</div>
       <div className="listing-container">
-        {fetchedData.map((entry) => (
-          <div key={`${entry.id}`} className="inbox-item">
-            <div className="listing-image-container">
-              <img src={entry.imgurl} alt="" />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          fetchedData.map((entry) => (
+            <div key={entry.id} className="inbox-item">
+              <div className="listing-image-container">
+                <img src={entry.imgurl} alt="" />
+              </div>
+              <div className="listing-text-container">{entry.title}</div>
+              <div className="listing-price-container">${entry.price}</div>
+              <div className="listing-button-container">
+                <button className="listing-button button-blue">
+                  <FontAwesomeIcon icon={faEdit} style={{ color: 'white' }} />
+                </button>
+                <button
+                  className="listing-button button-red"
+                  onClick={() => handleDelete(entry.id)}
+                >
+                  <FontAwesomeIcon icon={faTrash} style={{ color: 'white' }} />
+                </button>
+              </div>
             </div>
-            <div className="listing-text-container">{entry.title}</div>
-            <div className="listing-price-container">${entry.price}</div>
-            <div className="listing-button-container">
-              <button className="listing-button button-blue">
-                <FontAwesomeIcon icon={faEdit} style={{ color: 'white' }} />
-              </button>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
