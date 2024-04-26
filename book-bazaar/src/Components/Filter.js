@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Filter.css';
+import './darkMode/FilterDarkMode.css';
+
 
 const Filter = ({ setApplyFilter }) => {
   const [sort, setSort] = useState('latest');
@@ -9,8 +11,10 @@ const Filter = ({ setApplyFilter }) => {
     setApplyFilter({ sort, condition });
   };
 
+  var darkMode = localStorage.getItem('darkMode') === 'true';
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${darkMode ? 'dark-mode' : ''}`}>
       {/* <h2>Filter</h2> */}
       <div className="filter-option">
         <label htmlFor="genre">Sort by:</label>
