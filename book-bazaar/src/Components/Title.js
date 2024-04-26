@@ -39,8 +39,9 @@ function Title({ setSearchQuery }) {
       </Link>
       {/* Search bar space */}
       <SearchBar setSearchQuery={setSearchQuery} />
+    <div className='dMode'>
 
-      <label class='txt'>
+      <label class='dMode_txt'>
           <b>
             {darkMode ? 'Dark' : 'Light'}
         </b>
@@ -49,7 +50,8 @@ function Title({ setSearchQuery }) {
         <input type="checkbox" checked={darkMode} onChange={toggleDarkMode}></input>
         <span className="slider round"></span>
       </label>
-      
+      </div>
+
 
       <Profile />
     </div>

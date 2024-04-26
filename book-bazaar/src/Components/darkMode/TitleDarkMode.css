@@ -103,6 +103,13 @@ ul li {
   transform: scale(1.1); /* Scale up by 10% on hover */
 }
 
-.txt{
+.dMode_txt{
   color: var(--foregroung_main_color);
+  margin: 0 10px;
+}
+
+.dMode{
+  display: flex;
+  justify-content: space-between; /* Horizontally center the elements */
+  align-items: center;
 }
