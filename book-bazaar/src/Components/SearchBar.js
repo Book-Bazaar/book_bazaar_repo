@@ -7,6 +7,7 @@ export function SearchBar({ setSearchQuery }) {
 
   const handleChange = (value) => {
     setInput(value);
+    setSearchQuery(input);
   };
 
   const handleSubmit = (e) => {
