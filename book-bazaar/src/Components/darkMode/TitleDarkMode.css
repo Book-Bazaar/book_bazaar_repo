@@ -1,9 +1,10 @@
-:root {
-  --background_color: #ffffff;
-  --search_bar_color: #ddd;
-  --foregroung_main_color: #000000;
-  --foregroung_blue_color: #007bff;
+.dark-mode {
+  --background_color: #232B32;
+  --search_bar_color: #446384;
+  --foregroung_main_color: #ffffff;
+  --foregroung_blue_color: #3772b2;
 }
+
 .Title {
   width: 100%;
   display: flex;
