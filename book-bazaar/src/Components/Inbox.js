@@ -13,6 +13,8 @@ import {
   getDoc,
 } from 'firebase/firestore';
 import './Inbox.css';
+import './darkMode/InboxDarkMode.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -123,9 +125,11 @@ function Inbox() {
       console.error('Error removing email:', error);
     }
   };
+  var darkMode = localStorage.getItem('darkMode') === 'true';
 
   return (
-    <div className="inbox-container">
+    <div className={`inbox-container ${darkMode ? 'dark-mode' : ''}`}>
+
       <div className="inbox-container">
         <div className="inbox-header">My Inbox</div>
         {deleteConfirmation && (
