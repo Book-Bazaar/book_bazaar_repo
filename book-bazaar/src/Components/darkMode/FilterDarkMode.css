@@ -1,0 +1,58 @@
+/* FilterSidebar.module.css */
+
+.dark-mode {
+  --background_color: #232B32;
+  --background_color_gray: #darkgray;
+  --foregroung_main_color: #ffffff;
+  --foregroung_blue_color: #3772b2;
+}
+
+.sidebar {
+  background-color: var(--background_color);
+  color: var(--foregroung_main_color);
+  padding: 20px;
+  border-radius: 5px solid var(--background_color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Need to fix button CSS, width property becomes global? */
+.apply-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--background_color_gray);
+  color: var(--foregroung_main_color);
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 16px;
+  margin-top: 0;
+  color: var(--foregroung_main_color);
+
+}
+
+.filterOption {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: var(--background_color);
+  font-size: 16px;
+  color: var(--foregroung_main_color);
+
+}
+
+button:hover {
+  background-color: var(--foregroung_blue_color);
+}
