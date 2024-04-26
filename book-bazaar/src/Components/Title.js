@@ -8,6 +8,8 @@ import SearchBar from './SearchBar';
 import { Profile } from './Profile';
 // import { Slbuttons } from './Slbuttons.js';
 import logo from '../Assets/book_bazaar_logo.png';
+import logo_dark from '../Assets/dark_book_bazaar_logo.png';
+
 import { Link } from 'react-router-dom'; // Import Link component for routing
 
 function Title({ setSearchQuery }) {
@@ -33,7 +35,7 @@ function Title({ setSearchQuery }) {
     <div className={`Title ${darkMode ? 'dark-mode' : ''}`}>
       {/* Logo space */}
       <Link to="/">
-        <img src={logo} alt="" className="logo" />
+        <img src={darkMode? logo_dark : logo} alt="" className="logo" />
       </Link>
       {/* Search bar space */}
       <SearchBar setSearchQuery={setSearchQuery} />
