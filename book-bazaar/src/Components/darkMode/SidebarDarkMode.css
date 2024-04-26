@@ -48,7 +48,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .popup h2 {
-  color: black; /* Change the color to your desired color */
+  color: var(--foregroung_main_color);
+  background: var(--background_color);; /* Change the color to your desired color */
 }
 
 .popup button {
