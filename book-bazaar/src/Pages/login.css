@@ -211,6 +211,7 @@ body {
   cursor: pointer;
 }
 
+
 .logoLogin {
   position: absolute;
   margin-top: -90px;
@@ -233,6 +234,10 @@ body {
     15px 25px 10px rgba(5, 31, 150, 0.1), 15px 20px 20px rgba(5, 31, 150, 0.1),
     inset -10px -10px 15px rgba(255, 255, 255, 0.5);
   border-radius: 44% 56% 65% 35% / 57% 58% 42% 43%;
+
+  /* object-fit: scale-down; */
+  object-fit: scale-down;
+  
 }
 
 .forgot-password {

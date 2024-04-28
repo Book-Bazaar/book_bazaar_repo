@@ -3,8 +3,12 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../Assets/book_bazaar_logo.png';
+import logo_dark from '../Assets/small_dark_book_bazaar_logo.png';
+
 import './login.css';
 
+
+var darkMode = localStorage.getItem('darkMode') === 'true';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +35,9 @@ const Login = () => {
         <div className="content">
           <h1>Login</h1>
           <Link to="/">
-            <img src={logo} alt="" className="logoLogin" />
+            <div className='img-container'>
+              <img src={logo_dark} alt="" className="logoLogin" />
+            </div>
           </Link>
           <form onSubmit={handleLogin} className="login-form">
             {/* INPUT FOR EMAIL */}
