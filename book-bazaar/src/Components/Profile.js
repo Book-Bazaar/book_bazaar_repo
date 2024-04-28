@@ -24,7 +24,9 @@ function Menu({ onClose }) {
             </Link>
           </li>
           <li>
-            <div>Change Password</div>
+          <Link to="/forgot-password">
+              <div className="">Change Password</div>
+            </Link>
           </li>
           <li>
             <div onClick={handleSignOut}>Sign Out</div>
