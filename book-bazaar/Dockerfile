@@ -20,4 +20,4 @@ RUN npm install
 COPY . .
 
 # Run the web service on container startup.
-CMD [ "node", "start" ]
+CMD [ "npm", "start" ]
