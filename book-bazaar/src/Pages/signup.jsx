@@ -4,7 +4,7 @@ import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './signup.css';
-import logo from '../Assets/book_bazaar_logo.png';
+import logo from '../Assets/small_dark_book_bazaar_logo.png';
 import logoSignup from '../Assets/book_bazaar_logo.png';
 
 const SignUp = () => {

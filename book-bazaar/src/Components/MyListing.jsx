@@ -1,4 +1,5 @@
 import './MyListing.css';
+import './darkMode/MyListingDarkMode.css';
 import React, { useEffect, useState } from 'react';
 import { auth } from '../firebase';
 import {
@@ -58,9 +59,11 @@ const MyListing = () => {
       console.error('Error removing document: ', error);
     }
   };
+  var darkMode = localStorage.getItem('darkMode') === 'true';
 
   return (
-    <div className="listing-container">
+    <div className={`listing-container ${darkMode ? 'dark-mode' : ''}`}>
+
       <div className="listing-header">My Listings</div>
       <div className="listing-container">
         {loading ? (

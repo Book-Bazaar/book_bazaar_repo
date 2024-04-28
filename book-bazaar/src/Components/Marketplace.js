@@ -3,6 +3,8 @@ import Popup from './BuyPopup';
 import Tile from './Tile';
 // import Filter from './Filter';
 import './Marketplace.css';
+import './darkMode/MarketplaceDarkMode.css';
+
 import { getFirestore, collection, getDocs, doc, collectionGroup } from 'firebase/firestore';
 
 const Marketplace = ({ searchQuery, applyFilter }) => {
@@ -135,8 +137,10 @@ const Marketplace = ({ searchQuery, applyFilter }) => {
     setIsOpen(false);
   };
 
+  var darkMode = localStorage.getItem('darkMode') === 'true';
+
   return (
-    <div className="marketplace">
+    <div className={`marketplace ${darkMode ? 'dark-mode' : ''}`} >
       {loading ? (
         <div className="loading-animation"></div>
       ) : filteredBooks.length > 0 ? (

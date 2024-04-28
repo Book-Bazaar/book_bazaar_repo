@@ -1,3 +1,10 @@
+.dark-mode {
+  --background_color: #232B32;
+  --background_color_gray: #darkgray;
+  --foregroung_main_color: #ffffff;
+  --foregroung_blue_color: #59789a;
+}
+
 .sidebar {
   background-color: #f0f0f0;
   padding: 20px;
@@ -41,7 +48,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .popup h2 {
-  color: black; /* Change the color to your desired color */
+  color: var(--foregroung_main_color);
+  background: var(--background_color);; /* Change the color to your desired color */
 }
 
 .popup button {
@@ -60,7 +68,7 @@
 
 .post-button {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: var(--foregroung_blue_color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -68,7 +76,7 @@
 }
 
 .post-button:hover {
-  background-color: var(--foreground_blue_color);
+  background-color: #0056b3;
 }
 
 .form-row {
@@ -78,16 +86,12 @@
 .form-row input {
   flex: 1;
   margin-right: 10px;
-  color: var(--foregroung_main_color);
-  background: var(--background_color);
 }
 
 .long-input,
 select {
   flex: 1;
   margin-bottom: 10px;
-  color: var(--foregroung_main_color);
-  background: var(--background_color);
 }
 
 .long-input {
@@ -100,5 +104,3 @@ select {
   width: 100%;
   padding: 8px;
 }
-
-

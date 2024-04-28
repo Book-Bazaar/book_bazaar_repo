@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
+import './darkMode/SidebarDarkMode.css';
 import Filter from './Filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -11,9 +12,9 @@ function Sidebar({ setApplyFilter }) {
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-
+  var darkMode = localStorage.getItem('darkMode') === 'true';
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${darkMode ? 'dark-mode' : ''}`}>
       {/* Left Sidebar */}
       <div className="post-button" onClick={togglePopup}>
         {showPopup && <Popup onClose={togglePopup} />}

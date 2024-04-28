@@ -1,9 +1,10 @@
-:root {
-  --background_color: #ffffff;
-  --search_bar_color: #ddd;
-  --foregroung_main_color: #000000;
-  --foregroung_blue_color: #007bff;
+.dark-mode {
+  --background_color: #232B32;
+  --search_bar_color: #446384;
+  --foregroung_main_color: #ffffff;
+  --foregroung_blue_color: #3772b2;
 }
+
 .Title {
   width: 100%;
   display: flex;
@@ -102,6 +103,13 @@ ul li {
   transform: scale(1.1); /* Scale up by 10% on hover */
 }
 
-.txt{
+.dMode_txt{
   color: var(--foregroung_main_color);
+  margin: 0 10px;
+}
+
+.dMode{
+  display: flex;
+  justify-content: space-between; /* Horizontally center the elements */
+  align-items: center;
 }

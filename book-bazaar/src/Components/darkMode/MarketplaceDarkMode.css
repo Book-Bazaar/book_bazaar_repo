@@ -4,6 +4,13 @@
   gap: 20px;
 } */
 
+.dark-mode {
+  --background_color: #232B32;
+  --background_color_gray: #darkgray;
+  --foregroung_main_color: #ffffff;
+  --foregroung_blue_color: #3772b2;
+}
+
 .marketplace {
   background-color: var(--background_color);
   display: flex;
@@ -17,7 +24,7 @@
 
 .loading-animation {
   border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #333;
+  border-left-color: var(--foregroung_blue_color);
   border-radius: 50%;
   width: 40px;
   height: 40px;
