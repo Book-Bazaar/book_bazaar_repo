@@ -91,9 +91,13 @@ select {
 }
 
 .long-input {
-  width: 100%;
+
+  width: 94%;
   height: 100px;
   margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 select {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Sidebar.css';
 import './darkMode/SidebarDarkMode.css';
+import './Sidebar.css';
 import Filter from './Filter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
