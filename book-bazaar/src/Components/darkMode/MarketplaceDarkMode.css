@@ -9,10 +9,11 @@
   --background_color_gray: #darkgray;
   --foregroung_main_color: #ffffff;
   --foregroung_blue_color: #3772b2;
+  --marketplace_shade: #3a434a;
 }
 
 .marketplace {
-  background-color: var(--background_color);
+  background-color: var(--marketplace_shade);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

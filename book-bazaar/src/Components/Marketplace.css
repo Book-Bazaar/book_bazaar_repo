@@ -5,7 +5,7 @@
 } */
 
 .marketplace {
-  background-color: var(--background_color);
+  background-color: var(--marketplace_shade);
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
