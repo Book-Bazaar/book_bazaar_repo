@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.apply-button:hover {
+  background-color: grey;
+}
+
 h2 {
   font-size: 16px;
   margin-top: 0;
@@ -39,8 +43,4 @@ select {
   border: 1px solid #ccc;
   background-color: #fff;
   font-size: 16px;
-}
-
-button:hover {
-  background-color: grey;
 }

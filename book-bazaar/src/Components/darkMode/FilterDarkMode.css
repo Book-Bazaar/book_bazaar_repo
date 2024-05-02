@@ -1,7 +1,7 @@
 /* FilterSidebar.module.css */
 
 .dark-mode {
-  --background_color: #232B32;
+  --background_color: #232b32;
   --background_color_gray: #darkgray;
   --foregroung_main_color: #ffffff;
   --foregroung_blue_color: #3772b2;
@@ -16,7 +16,7 @@
 }
 
 /* Need to fix button CSS, width property becomes global? */
-.apply-button {
+/* .apply-button {
   width: 100%;
   padding: 10px;
   border: none;
@@ -24,13 +24,12 @@
   background-color: var(--background_color_gray);
   color: var(--foregroung_main_color);
   cursor: pointer;
-}
+} */
 
 h2 {
   font-size: 16px;
   margin-top: 0;
   color: var(--foregroung_main_color);
-
 }
 
 .filterOption {
@@ -50,7 +49,6 @@ select {
   background-color: var(--background_color);
   font-size: 16px;
   color: var(--foregroung_main_color);
-
 }
 
 button:hover {

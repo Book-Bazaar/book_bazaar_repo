@@ -87,7 +87,9 @@ ul li {
 }
 
 .auth-buttons button:hover {
-  background-color: var(--foregroung_blue_color); /* Darker shade of blue on hover */
+  background-color: var(
+    --foregroung_blue_color
+  ); /* Darker shade of blue on hover */
 }
 
 .profile {
@@ -102,6 +104,6 @@ ul li {
   transform: scale(1.1); /* Scale up by 10% on hover */
 }
 
-.txt{
+.txt {
   color: var(--foregroung_main_color);
 }

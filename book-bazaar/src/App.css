@@ -9,15 +9,15 @@
   --search_bar_color: #ddd;
   --foregroung_main_color: #000000;
   --foregroung_blue_color: #007bff;
-  --marketplace_shade:#d3d3d3
+  --marketplace_shade: #d3d3d3;
 }
 
 .dark-mode {
-  --background_color: #232B32;
+  --background_color: #232b32;
   --background_color_gray: #darkgray;
   --foregroung_main_color: #ffffff;
   --foregroung_blue_color: #3772b2;
-  --marketplace_shade: #darkgray
+  --marketplace_shade: #darkgray;
 }
 
 .header {
@@ -88,17 +88,6 @@
 .search-bar button:hover,
 .search-bar button:focus {
   background-color: #0056b3;
-}
-
-.post-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 5px 10px;
-  width: 80; /* Adjust width as needed */
-  cursor: pointer;
 }
 
 .divider {

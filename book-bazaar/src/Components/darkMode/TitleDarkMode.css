@@ -1,5 +1,5 @@
 .dark-mode {
-  --background_color: #232B32;
+  --background_color: #232b32;
   --search_bar_color: #446384;
   --foregroung_main_color: #ffffff;
   --foregroung_blue_color: #3772b2;
@@ -88,7 +88,9 @@ ul li {
 }
 
 .auth-buttons button:hover {
-  background-color: var(--foregroung_blue_color); /* Darker shade of blue on hover */
+  background-color: var(
+    --foregroung_blue_color
+  ); /* Darker shade of blue on hover */
 }
 
 .profile {
@@ -103,12 +105,12 @@ ul li {
   transform: scale(1.1); /* Scale up by 10% on hover */
 }
 
-.dMode_txt{
+.dMode_txt {
   color: var(--foregroung_main_color);
   margin: 0 10px;
 }
 
-.dMode{
+.dMode {
   display: flex;
   justify-content: space-between; /* Horizontally center the elements */
   align-items: center;

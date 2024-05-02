@@ -8,14 +8,12 @@ export function Slbuttons() {
   return (
     <div className="app">
       <div className="header">
-        <div className="auth-buttons">
-          <Link to="/signup">
-            <button>Sign Up</button>
-          </Link>
-          <Link to="/login">
-            <button>Log In</button>
-          </Link>
-        </div>
+        <Link to="/signup">
+          <button className="auth-buttons">Sign Up</button>
+        </Link>
+        <Link to="/login">
+          <button className="auth-buttons">Log In</button>
+        </Link>
       </div>
     </div>
   );
