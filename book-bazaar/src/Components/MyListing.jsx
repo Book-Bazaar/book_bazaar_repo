@@ -37,8 +37,11 @@ const MyListing = () => {
             });
           });
         }
-        setFetchedData(fetchedEntries);
-        setLoading(false);
+        setTimeout(() => {
+          setFetchedData(fetchedEntries);
+          setLoading(false);
+        }, 200);
+        localStorage.setItem('listingData', JSON.stringify(fetchedEntries));
         console.log('Success');
       } catch (error) {
         console.error('Error fetching entries: ', error);
@@ -63,7 +66,6 @@ const MyListing = () => {
 
   return (
     <div className={`listing-container ${darkMode ? 'dark-mode' : ''}`}>
-
       <div className="listing-header">My Listings</div>
       <div className="listing-container">
         {loading ? (
